@@ -11,8 +11,19 @@ import javax.persistence.Id;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity // User 클래스가 읽어서 자동으로 Mysql에 자동으로 테이블이 생성이 된다.
+
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity // User 클래스가 읽어서 자동으로 Mysql에 자동으로 테이블이 생성
 public class User {
 	
 	
