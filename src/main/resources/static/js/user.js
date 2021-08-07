@@ -25,7 +25,7 @@ let index = {
 		}).done(function(res){
 			alert("회원가입 완료");
 			alert(res);
-			//location.href ="/blog";
+			location.href ="/blog";
 			
 		}).fail(function(error){
 			alert(JSON.stringify(error));
