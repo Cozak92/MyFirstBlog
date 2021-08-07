@@ -34,7 +34,7 @@ public class User {
 	private int id; //auto increment
 	
 	
-	@Column(nullable =false, length = 30)
+	@Column(nullable =false, length = 30,unique = true)
 	private String userName;
 	@Column(nullable =false, length = 100)
 	private String password;
