@@ -41,7 +41,6 @@ public class Board {
 	@Lob
 	private String content; // 섬머노트 라이브러리 -> html 태그 섞여서 디자인이므로 용량 큼
 	
-	@ColumnDefault("0") // 조회수
 	private int count;
 	
 	@ManyToOne // many = Board , User = one

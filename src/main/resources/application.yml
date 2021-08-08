@@ -29,7 +29,7 @@ spring:
 server:
   port:  4646
   servlet:
-    context-path:  /blog
+    context-path:  /
     
 
  

@@ -4,6 +4,7 @@ let index = {
 		$("#btn-save").on("click", ()=>{
 			this.save();
 		});
+
 	},
 	
 	save:function(){
@@ -16,7 +17,7 @@ let index = {
 		// ajax 호출시 default가 비동기 호출
 		$.ajax({
 			type:"POST",
-			url:"/blog/api/user",
+			url:"/auth/joinProc",
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8', //mimetype
 			dataType: "json" //응답이 왔을때 생긴게 json이라면 => javascript 오브젝트로 바꾸어줌
@@ -24,8 +25,7 @@ let index = {
 			
 		}).done(function(res){
 			alert("회원가입 완료");
-			alert(res);
-			location.href ="/blog";
+			location.href ="/";
 			
 		}).fail(function(error){
 			alert(JSON.stringify(error));
