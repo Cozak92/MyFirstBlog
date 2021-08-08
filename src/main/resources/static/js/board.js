@@ -1,7 +1,7 @@
 
 let index = {
 	init:function(){
-		$("#btn-save").on("click", ()=>{
+		$("#btn-write-save").on("click", ()=>{
 			this.save();
 		});
 
@@ -16,11 +16,10 @@ let index = {
 
 		$.ajax({
 			type:"POST",
-			url:"/auth/board",
+			url:"/api/board",
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8', 
 			dataType: "json" 
-			
 			
 		}).done(function(res){
 			alert("글 작성 완료");

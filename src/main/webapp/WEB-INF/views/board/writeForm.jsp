@@ -5,7 +5,7 @@
 	 <form>
 		<div class="form-group">
 			<label for="title">제목</label> 
-			<input type=text  class="form-control" placeholder="제목을 입력하세요." id="title">
+			<input type=text  class="form-control" placeholder="제목을 입력하세요..." id="title">
 		</div>
 		
 		<div class="form-group">
@@ -13,8 +13,9 @@
 		  <textarea class="form-control summernote" rows="5" id="content"></textarea>
 		</div>
 	
-		<button id="btn-save" class="btn btn-primary">작성 완료</button>
+		
 	</form>
+	<button id="btn-write-save" class="btn btn-primary">작성 완료</button>
 </div>
 
 <script>

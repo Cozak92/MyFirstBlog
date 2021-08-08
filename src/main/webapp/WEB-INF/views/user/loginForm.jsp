@@ -13,7 +13,7 @@
 		
 		<div class="form-group form-check">
 			<label class="form-check-label"> 
-			<input class="form-check-input" name = "remember-me"type="checkbox"> Remember me
+			<input class="form-check-input" name = "remember-me"type="checkbox"> 로그인 상태 유지
 			</label>
 		</div>
 		<button id="btn-login" class="btn btn-primary">로그인</button>

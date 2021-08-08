@@ -20,7 +20,9 @@ public class BoardService {
 
 	
 	@Transactional
-	public void 글등록(Board board) {
+	public void 글등록(Board board,User user) {
+		board.setCount(0);
+		board.setUser(user);
 		boardRepositoy.save(board);
 	}
 }
