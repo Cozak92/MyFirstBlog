@@ -35,16 +35,21 @@ let index = {
 	},
 	
 	deleteById:function(){
-		let data = {
-			title:$("#boardTitle").val(),
-			id:$("#id").val(),
-			button:$("#btn-delete").val(),
-			username:$("#username").val()
-		};
-	
-	console.log(data);
-	
-	
+		let id = $('#id').text();
+		console.log("/api/board/"+id);
+		
+		$.ajax({
+			type:"DELETE",
+			url:"/api/board/" + id,
+			dataType: "json" 
+			
+		}).done(function(res){
+			alert("글 삭제 완료");
+			location.href ="/";
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
 	},
 
 

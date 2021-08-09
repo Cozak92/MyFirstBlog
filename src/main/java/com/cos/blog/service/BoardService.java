@@ -39,7 +39,7 @@ public class BoardService {
 	public Board 글상세보기(int id) {
 		return boardRepositoy.findById(id)
 				.orElseThrow(()->{
-			return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을수 없습니다.");
+			return new IllegalArgumentException("글 상세보기 실패 : 글을 찾을수 없습니다.");
 		});
 		
 	}
