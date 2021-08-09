@@ -4,8 +4,11 @@ let index = {
 		$("#btn-write-save").on("click", ()=>{
 			this.save();
 		});
-
+		$("#btn-delete").on("click", ()=>{
+			this.deleteById();
+		});
 	},
+
 	
 	save:function(){
 		let data = {
@@ -29,7 +32,23 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 		
-	}
+	},
+	
+	deleteById:function(){
+		let data = {
+			title:$("#boardTitle").val(),
+			id:$("#id").val(),
+			button:$("#btn-delete").val(),
+			username:$("#username").val()
+		};
+	
+	console.log(data);
+	
+	
+	},
+
+
+
 }
 
 index.init();
