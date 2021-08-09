@@ -25,7 +25,8 @@ public class PrincipalDetailService implements UserDetailsService  {
 					return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다. : " + username);
 				});
 		
-		// 리턴하기전에 패스워드 자동으로 비교
+		// 리턴하기전에 패스워드 자동으로 시큐리티가 비교한다
+		
 		return new PrincipalDetail(principal); // 시큐리티 세션에 유저정보가 저장
 	}
 }

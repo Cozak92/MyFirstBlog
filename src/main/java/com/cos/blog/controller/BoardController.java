@@ -20,8 +20,8 @@ public class BoardController {
 	
 	
 	
-	@Autowired
-	private BoardService boardService;
+		@Autowired
+		private BoardService boardService;
 //	@AuthenticationPrincipal PrincipalDetail principal <- 세션 찾는법
 		@GetMapping("/")
 		public String index(Model model, @PageableDefault(size = 3, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
@@ -29,7 +29,7 @@ public class BoardController {
 			return "index";
 		}
 		
-		@GetMapping("board/{id}")
+		@GetMapping("/board/{id}")
 		public String findById(Model model, @PathVariable int id) {
 			model.addAttribute("board",boardService.글상세보기(id));
 			return "board/detail";
@@ -38,5 +38,11 @@ public class BoardController {
 		@GetMapping("/board/wirteForm")
 		public String writeForm() {
 			return "board/writeForm";
+		}
+		
+		@GetMapping("/board/{id}/updateForm")
+		public String updateForm(@PathVariable int id, Model model) {
+			model.addAttribute("board",boardService.글상세보기(id));
+			return "board/updateForm";
 		}
 }

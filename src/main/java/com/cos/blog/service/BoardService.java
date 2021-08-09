@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.blog.auth.PrincipalDetail;
 import com.cos.blog.model.Board;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
@@ -45,8 +46,33 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public void 글삭제하기(int id) {
-		boardRepositoy.deleteById(id);		
+	public void 글삭제하기(int id,PrincipalDetail principal) {
+		Board board = boardRepositoy.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("글 삭제 실패 : 글을 찾을수 없습니다.");
+				}); 
+
+		
+	    if (board.getUser().getId() != principal.getUser().getId()) {
+            throw new IllegalStateException("글 삭제 실패 : 해당 글을 삭제할 권한이 없습니다.");
+        }
+	    boardRepositoy.delete(board);
+	}
+	
+	@Transactional
+	public void 글수정하기(int id,Board requestedBoard, PrincipalDetail principal) {
+
+		Board board = boardRepositoy.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("글 수정 실패 : 글을 찾을수 없습니다.");
+			}); 
+		
+	    if (board.getUser().getId() != principal.getUser().getId()) {
+            throw new IllegalStateException("글 수정 실패 : 해당 글을 수정할 권한이 없습니다.");
+        }
+		board.setTitle(requestedBoard.getTitle());
+		board.setContent(requestedBoard.getContent());
+		
 	}
 
 }

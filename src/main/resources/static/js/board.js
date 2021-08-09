@@ -7,6 +7,9 @@ let index = {
 		$("#btn-delete").on("click", ()=>{
 			this.deleteById();
 		});
+		$("#btn-update").on("click", ()=>{
+			this.update();
+		});
 	},
 
 	
@@ -36,7 +39,6 @@ let index = {
 	
 	deleteById:function(){
 		let id = $('#id').text();
-		console.log("/api/board/"+id);
 		
 		$.ajax({
 			type:"DELETE",
@@ -52,6 +54,28 @@ let index = {
 		});
 	},
 
+	update:function(){
+		let id = $("#id").val();
+		let data = {
+			title:$("#title").val(),
+			content:$("#content").val()
+		}
+		
+		$.ajax({
+			type:"PUT",
+			url:"/api/board/" + id,
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8', 
+			dataType: "json" ,
+			
+		}).done(function(res){
+			alert("글 수정 완료");
+			location.href ="/board/"+id;
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	},
 
 
 }
