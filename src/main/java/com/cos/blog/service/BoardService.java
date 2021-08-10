@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.auth.PrincipalDetail;
 import com.cos.blog.model.Board;
+import com.cos.blog.model.Reply;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repositoy.BoardRepository;
+import com.cos.blog.repositoy.ReplyRepository;
 import com.cos.blog.repositoy.UserRepositoy;
 
 @Service
@@ -22,6 +24,11 @@ public class BoardService {
 
 	@Autowired
 	private BoardRepository boardRepositoy;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
+	
+	
 
 	
 	@Transactional
@@ -73,6 +80,19 @@ public class BoardService {
 		board.setTitle(requestedBoard.getTitle());
 		board.setContent(requestedBoard.getContent());
 		
+	}
+	
+	@Transactional
+	public void 댓글등록(User user,int boardId, Reply requsetReply) {
+		Board board = boardRepositoy.findById(boardId)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("댓글 등록 실패 : 글을 찾을수 없습니다.");
+		}); 
+		
+		requsetReply.setUser(user);
+		requsetReply.setBoard(board);
+		
+		replyRepository.save(requsetReply);
 	}
 
 }
