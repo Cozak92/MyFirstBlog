@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      - MYSQL_DATABASE=blog
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=tkacns11
+    command: ['--character-set-server=utf8mb4', '--collation-server-utf8mb4_unicode_ci']
+    ports:
+      - 3306:3306
+      
+  application:
+        build: .
+        ports:
+          - 8080:8080
+        depends_on:
+          - database
+    
+ 
