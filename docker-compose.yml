@@ -14,7 +14,7 @@ services:
   application:
         build: .
         ports:
-          - 8080:8080
+          - 4646:4646
         depends_on:
           - database
     
