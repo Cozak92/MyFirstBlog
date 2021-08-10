@@ -94,15 +94,45 @@ let index = {
 			dataType: "json" 
 			
 		}).done(function(res){
-			alert("댓글 작성 완료");
+			if(res.status === 500){
+				alert("댓글 작성 실패")
+			}
+			else{
+				alert("댓글 작성 완료");
+			}
 			location.href =`/board/${data.boardId}`;
+			
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+		},
+		
+		replyDelete:function(boardId,replyId){
+		
+		$.ajax({
+			type:"DELETE",
+			url:`/api/board/${boardId}/reply/${replyId}`,
+			contentType: 'application/json; charset=utf-8', 
+			dataType: "json" 
+			
+		}).done(function(res){
+			if(res.status === 500){
+				alert("댓글 삭제 실패")
+			}
+			else{
+				alert("댓글 삭제 완료");
+			}
+			location.href =`/board/${boardId}`;
+			
 			
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
 
+
 		
-	},
+	}
 
 
 }

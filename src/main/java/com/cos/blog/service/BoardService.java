@@ -94,6 +94,11 @@ public class BoardService {
 		
 		replyRepository.save(requsetReply);
 	}
+	
+	@Transactional
+	public void 댓글삭제(int replyID) {
+		replyRepository.deleteById(replyID);
+	}
 
 }
 

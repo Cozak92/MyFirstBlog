@@ -3,6 +3,7 @@ package com.cos.blog.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Board {
 	@JoinColumn(name="userId")
 	private User user; //DB는 오브젝트를 저장할수 없어서 FK를 사용하지만 ORM을 사용할때는 오브젝트로 사용한다
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"board"})
 	@OrderBy("id desc")
 	private List<Reply> replys;
