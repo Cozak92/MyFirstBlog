@@ -1,6 +1,8 @@
 package com.cos.blog.service;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,6 +26,11 @@ public class UserService {
 	private BCryptPasswordEncoder encoder;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Transactional
+	public User 회원찾기(String email) {
+		return userRepositoy.findByEmail(email).get();
+	}
 	
 	@Transactional
 	public void 회원가입(User user) {

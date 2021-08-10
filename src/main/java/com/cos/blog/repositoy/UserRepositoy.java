@@ -16,6 +16,7 @@ import com.cos.blog.model.User;
 public interface UserRepositoy extends JpaRepository<User, Integer> {
 
 	Optional<User> findByUsername(String username);
+	Optional<User> findByEmail(String email);
 	
 }
 
