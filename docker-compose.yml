@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  database:
+  docker-mysql:
     image: mysql:5.7
     container_name: db
     environment:
@@ -9,13 +9,17 @@ services:
       - MYSQL_ROOT_HOST=%
       - MYSQL_ROOT_PASSWORD=tkacns11
     ports:
-      - 3306:3306
+      - 3307:3307
       
   application:
-        build: .
-        ports:
-          - 4646:4646
-        depends_on:
-          - database
-    
+    restart: always
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/blog?createDatabaseIfNotExists=true&serverTimezone=Asia/Seoul&autoReconnect=true&useSSL=false
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
+    ports:
+      - 4646:4646
+    depends_on:
+      - docker-mysql
+
  
