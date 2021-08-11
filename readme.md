@@ -3,7 +3,7 @@
 
 ![](https://media.vlpt.us/images/roo333/post/cf501a24-8125-4835-a1bd-1e18af5e3f6f/20210811_172135.png)
 
-ec2-3-35-166-186.ap-northeast-2.compute.amazonaws.com:4646 👈 클릭!
+[블로그주소](ec2-3-35-166-186.ap-northeast-2.compute.amazonaws.com:4646) 👈 클릭!
 
 [Backlog & Loadmap & Issue 구글 스프레드 시트](https://docs.google.com/spreadsheets/d/1pfcIS6wGO8Kft20cD9c0Z9SHDwTE0-QXbkVGVtAeVes/edit#gid=1253300756)
 
